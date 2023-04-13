@@ -1,0 +1,6 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: "spring-boot-test-build"
+spec:
+
