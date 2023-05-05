@@ -3,4 +3,25 @@ apiVersion: build.openshift.io/v1
 metadata:
   name: "spring-boot-test-build"
 spec:
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        namespace: openshift
+        #name: 'openjdk-11-rhel7:1.1'
+        name: "ubi8-openjdk-17:1.12"
+    postCommit: { }
+  source:
+    type: Git
+    git:
+      uri: https://github.com/jlmayorga/spring-boot-test
+      ref: main
+    contextDir: /
+  triggers:
+    - type: ConfigChange
+    - type: ImageChange
+      imageChange: { }
+  runPolicy: Serial
+
 

@@ -1,0 +1,40 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+  labels:
+    app: spring-boot-test
+    app.kubernetes.io/component: spring-boot-test
+    app.kubernetes.io/instance: spring-boot-test
+  name: spring-boot-test
+  namespace: default
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: spring-boot-test:latest
+  runPolicy: Serial
+  source:
+    git:
+      uri: https://github.com/jlmayorga/spring-boot-test
+    type: Git
+  strategy:
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: ubi8-openjdk-17:1.12
+        namespace: openshift
+    type: Source
+  successfulBuildsHistoryLimit: 5
+  triggers:
+  - github:
+      secret: fuzinXyR6ymVryohO_gx
+    type: GitHub
+  - generic:
+      secret: XnNU04CK9kDv8mo9ctbD
+    type: Generic
+  - type: ConfigChange
+  - type: ImageChange
