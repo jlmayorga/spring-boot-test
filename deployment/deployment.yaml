@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: spring-boot-test-external-config
+  name: spring-boot-test-external-config
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: spring-boot-test-external-config
+  template:
+    metadata:
+      labels:
+        deployment: spring-boot-test-external-config
+    spec:
+      containers:
+      - name: spring-boot-test-external-config
+        image: image-registry.openshift-image-registry.svc:5000/default/spring-boot-test@sha256:826b92411368d77a8003da70ff08a04bc858f21614ff1e91c50da9d2ad541c34
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        - containerPort: 8443
+          protocol: TCP
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File

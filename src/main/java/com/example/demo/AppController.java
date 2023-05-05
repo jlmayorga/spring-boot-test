@@ -12,10 +12,14 @@ public class AppController {
     @Value("${app.environment}")
     private String environment;
 
+    @Value("${app.external.config}")
+    private String externalConfig;
+
     @GetMapping("/info")
     public Map<String, String> getAppInfo() {
         Map<String, String> response = new HashMap<>();
         response.put("App Environment", environment);
+        response.put("External Config", externalConfig);
         return response;
     }
 }
