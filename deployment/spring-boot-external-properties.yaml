@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  application.properties: |
+    app.external.config=Success!
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: spring-boot-external-properties
