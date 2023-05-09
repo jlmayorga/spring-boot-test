@@ -1,0 +1,17 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    openshift.io/host.generated: "true"
+  labels:
+    app: spring-boot-backend
+  name: spring-boot-backend
+spec:
+#  host: spring-boot-backend-default.apps.cluster-cj69r.cj69r.sandbox1250.opentlc.com
+  port:
+    targetPort: port-1
+  to:
+    kind: Service
+    name: spring-boot-backend
+    weight: 100
+  wildcardPolicy: None

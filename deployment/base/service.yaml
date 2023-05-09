@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: spring-boot-backend
+  name: spring-boot-backend
+spec:
+  ports:
+  - name: port-1
+    port: 8080
+  - name: port-2
+    port: 8443
+  selector:
+    deployment: spring-boot-backend
