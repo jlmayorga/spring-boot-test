@@ -18,7 +18,7 @@ public class AppController {
     @Value("${HOSTNAME:NA}")
     private String podName;
 
-    @Value("${POD_NAMESPACE}")
+    @Value("${POD_NAMESPACE:NA}")
     private String namespace;
 
     @GetMapping("/info")
