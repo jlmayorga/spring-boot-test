@@ -15,11 +15,15 @@ public class AppController {
     @Value("${app.external.config}")
     private String externalConfig;
 
+    @Value("${HOSTNAME:NA}")
+    private String podName;
+
     @GetMapping("/info")
     public Map<String, String> getAppInfo() {
         Map<String, String> response = new HashMap<>();
-        response.put("App Environment", environment);
-        response.put("External Config", externalConfig);
+        response.put("environment", environment);
+        response.put("externalConfig", externalConfig);
+        response.put("podName", podName);
         return response;
     }
 }
