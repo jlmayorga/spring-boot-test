@@ -18,12 +18,16 @@ public class AppController {
     @Value("${HOSTNAME:NA}")
     private String podName;
 
+    @Value("${POD_NAMESPACE}")
+    private String namespace;
+
     @GetMapping("/info")
     public Map<String, String> getAppInfo() {
         Map<String, String> response = new HashMap<>();
         response.put("environment", environment);
         response.put("externalConfig", externalConfig);
         response.put("podName", podName);
+        response.put("namespace", namespace);
         return response;
     }
 }
